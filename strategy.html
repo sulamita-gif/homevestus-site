@@ -1,36 +1,117 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Strategy</title>
-<link rel="stylesheet" href="assets/css/styles.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Strategy | Homevest US</title>
+  <meta name="description" content="Disciplined tax deed sourcing, underwriting, execution, and exits." />
+  <link rel="stylesheet" href="assets/css/styles.css" />
 </head>
 <body>
+<a class="skip" href="#content">Skip to content</a>
+<header id="siteHeader">
+  <div class="container navbar">
+    <a class="brand" href="index.html"><span class="mark" aria-hidden="true"></span><span>Homevest US</span></a>
 
-<header>
-<div class="container navbar">
-<a class="brand" href="index.html">Homevest US</a>
-<div class="navlinks">
-<a href="index.html">Home</a>
-<a href="strategy.html">Strategy</a>
-<a href="market.html">Market</a>
-<a href="investors.html">Investors</a>
-<a href="about.html">About</a>
-<a href="contact.html">Contact</a>
-</div>
-</div>
+    <nav class="navlinks" aria-label="Primary navigation">
+      <a class="" href="index.html">Home</a>
+      <a class="active" href="strategy.html">Strategy</a>
+      <a class="" href="market.html">Market</a>
+      <a class="" href="investors.html">Investors</a>
+      <a class="" href="about.html">About</a>
+      <a class="" href="contact.html">Contact</a>
+    </nav>
+
+    <div class="cta" aria-label="Call to action">
+      <a class="btn ghost" href="investors.html">Investor Access</a>
+      <a class="btn primary" href="verify.html">Verify Status</a>
+    </div>
+
+    <button class="menu-btn" type="button" aria-label="Open menu" aria-expanded="false" onclick="toggleNav()">
+      <span class="bars" aria-hidden="true"><span></span><span></span><span></span></span>
+    </button>
+  </div>
 </header>
+<main id="content">
+<section class="page">
+  <div class="container">
+    <h1>Strategy</h1>
+    <p style="color:var(--muted);max-width:75ch">
+      Our approach is process-driven: source, screen, underwrite, execute, and manage exits with jurisdiction-specific awareness.
+    </p>
 
-<main>
-<section class='section'><div class='container'><h1>Strategy</h1><p>Disciplined sourcing, underwriting, and structured exit planning.</p></div></section>
+    <div class="two-col" style="margin-top:16px;">
+      <div class="box">
+        <h3>Sourcing & Screening</h3>
+        <ul>
+          <li>County-level rule review</li>
+          <li>Dataset and list screening</li>
+          <li>Initial viability filters</li>
+        </ul>
+      </div>
+      <div class="box">
+        <h3>Underwriting & Controls</h3>
+        <ul>
+          <li>Comparable market checks (high level)</li>
+          <li>Title / lien considerations (process-dependent)</li>
+          <li>Exit feasibility and time-to-execute</li>
+        </ul>
+      </div>
+      <div class="box">
+        <h3>Execution Workflow</h3>
+        <ul>
+          <li>Bid discipline and caps</li>
+          <li>Documentation and timelines</li>
+          <li>Post-sale steps & compliance</li>
+        </ul>
+      </div>
+      <div class="box">
+        <h3>Exit Pathways</h3>
+        <ul>
+          <li>Resale</li>
+          <li>Rental / hold (where applicable)</li>
+          <li>Disposition based on risk & liquidity</li>
+        </ul>
+      </div>
+    </div>
+
+    <hr class="sep" />
+    <p style="color:var(--muted)">
+      Interested in reviewing materials? <a class="btn primary" href="verify.html">Verify Accredited Status</a>
+    </p>
+  </div>
+</section>
 </main>
-
 <footer>
-<div class="container">
-© 2026 Homevest US · contact@homevestus.com · investors@homevestus.com
-</div>
+  <div class="container footer-grid">
+    <div>© <span id="y"></span> Homevest US. All rights reserved.</div>
+    <div class="footer-links">
+      <a href="privacy.html">Privacy</a>
+      <a href="terms.html">Terms</a>
+      <a href="disclaimer.html">Disclaimer</a>
+    </div>
+  </div>
 </footer>
 
+<script>
+  document.getElementById("y").textContent = new Date().getFullYear();
+
+  function toggleNav(){
+    const header = document.getElementById("siteHeader");
+    const isOpen = header.classList.toggle("nav-open");
+    const btn = header.querySelector(".menu-btn");
+    btn.setAttribute("aria-expanded", isOpen ? "true" : "false");
+  }
+
+  document.addEventListener("click", function(e){
+    const header = document.getElementById("siteHeader");
+    if(!header.classList.contains("nav-open")) return;
+    if(e.target.closest(".navlinks a")){
+      header.classList.remove("nav-open");
+      const btn = header.querySelector(".menu-btn");
+      if(btn) btn.setAttribute("aria-expanded","false");
+    }
+  });
+</script>
 </body>
 </html>
