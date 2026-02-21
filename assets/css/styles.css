@@ -96,210 +96,50 @@ header{
 
 main{min-height:60vh}
 .page{padding:40px 0 70px}
-
-/* ===== Premium Door Hero (no video, lightweight) ===== */
-.door-hero{
-  position: relative;
-  overflow: hidden;
-  padding:72px 0;
-  background:
-    radial-gradient(1200px 800px at 15% 10%, rgba(198,167,94,.18), transparent 55%),
-    radial-gradient(900px 600px at 90% 10%, rgba(255,255,255,.10), transparent 55%),
-    linear-gradient(135deg, var(--navy2), var(--navy));
+.hero{
+  background: radial-gradient(1200px 800px at 15% 10%, rgba(198,167,94,.20), transparent 55%),
+              radial-gradient(900px 600px at 90% 10%, rgba(255,255,255,.10), transparent 55%),
+              linear-gradient(135deg, var(--navy2), var(--navy));
   color:#fff;
+  padding:72px 0;
 }
-.door-kicker{
+.kicker{
   display:inline-flex;align-items:center;gap:10px;
   color:rgba(255,255,255,.86);
   font-weight:600;
   letter-spacing:.2px;
   margin-bottom:12px;
 }
-.door-kicker .dot{width:8px;height:8px;border-radius:999px;background:var(--gold)}
-
-.door-grid{
+.kicker .dot{width:8px;height:8px;border-radius:999px;background:var(--gold)}
+.hero-grid{
   display:grid;
-  grid-template-columns: 1.1fr .9fr;
-  gap:22px;
+  grid-template-columns: 1.25fr .9fr;
+  gap:26px;
   align-items:start;
 }
-
-.door-lead{
+h1,h2,h3{font-family:"Playfair Display", serif;line-height:1.15;margin:0 0 10px}
+h1{font-size: clamp(32px, 4vw, 52px);}
+h2{font-size: clamp(24px, 2.6vw, 34px);}
+h3{font-size: 20px;}
+.lead{
   font-size: clamp(16px, 1.4vw, 18px);
   color:rgba(255,255,255,.86);
-  max-width:62ch;
+  max-width:60ch;
   margin: 10px 0 18px;
 }
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:10px}
+.note{font-size:13px;color:rgba(255,255,255,.72);max-width:68ch;margin-top:14px}
 
-.door-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:10px}
-.door-note{font-size:13px;color:rgba(255,255,255,.72);max-width:70ch;margin-top:14px}
-
-.door-stage{
-  position: relative;
-  border-radius: var(--radius);
+.panel{
+  background:rgba(255,255,255,.08);
   border:1px solid rgba(255,255,255,.14);
-  background:rgba(255,255,255,.06);
-  box-shadow:0 18px 55px rgba(0,0,0,.22);
-  overflow:hidden;
-  min-height: 520px;
+  border-radius:var(--radius);
+  padding:18px 18px 16px;
+  box-shadow:none;
 }
+.panel ul{margin:10px 0 0;padding-left:18px;color:rgba(255,255,255,.86)}
+.panel li{margin:6px 0}
 
-.world{
-  position:absolute; inset:0;
-  background:
-    radial-gradient(900px 480px at 30% 18%, rgba(255,255,255,.35), transparent 58%),
-    radial-gradient(720px 420px at 78% 14%, rgba(198,167,94,.18), transparent 55%),
-    linear-gradient(180deg, #8fd0ff 0%, #eaf7ff 42%, #fbf8f2 100%);
-}
-
-/* Skyline layers (CSS-only, very light) */
-.world::before,
-.world::after{
-  content:"";
-  position:absolute; left:-10%; right:-10%;
-  bottom:-6%;
-  filter: blur(.2px);
-}
-.world::before{
-  height:52%;
-  background:
-    linear-gradient(180deg, rgba(11,31,59,0) 0%, rgba(11,31,59,.06) 45%, rgba(11,31,59,.10) 100%),
-    repeating-linear-gradient(90deg, rgba(11,31,59,.10) 0 22px, rgba(11,31,59,.06) 22px 46px);
-  clip-path: polygon(0 42%, 10% 38%, 18% 32%, 28% 36%, 38% 28%, 52% 32%, 62% 24%, 72% 30%, 82% 26%, 92% 32%, 100% 28%, 100% 100%, 0 100%);
-}
-.world::after{
-  height:44%;
-  opacity:.9;
-  background:
-    linear-gradient(180deg, rgba(11,31,59,0) 0%, rgba(11,31,59,.08) 55%, rgba(11,31,59,.14) 100%),
-    repeating-linear-gradient(90deg, rgba(11,31,59,.14) 0 18px, rgba(11,31,59,.08) 18px 40px);
-  clip-path: polygon(0 56%, 12% 51%, 22% 45%, 34% 49%, 46% 43%, 58% 47%, 70% 41%, 82% 47%, 92% 43%, 100% 47%, 100% 100%, 0 100%);
-}
-
-/* Subtle parallax shimmer */
-.door-hero.is-open .world{
-  animation: worldDrift 7s ease-in-out infinite;
-}
-@keyframes worldDrift{
-  0%,100%{transform: translate3d(0,0,0) scale(1)}
-  50%{transform: translate3d(-6px,-4px,0) scale(1.01)}
-}
-
-/* Floating sparkles */
-.sparkles{
-  position:absolute; inset:0;
-  pointer-events:none;
-  opacity:.0;
-  transition: opacity 600ms ease;
-}
-.door-hero.is-open .sparkles{opacity:1}
-.sparkles i{
-  position:absolute;
-  width:4px;height:4px;border-radius:999px;
-  background:rgba(255,255,255,.92);
-  box-shadow:0 0 14px rgba(255,255,255,.55);
-  opacity:.0;
-  animation: sparkle 2.8s ease-in-out infinite;
-}
-@keyframes sparkle{
-  0%,100%{transform: translate3d(0,0,0) scale(.8); opacity:0}
-  35%{opacity:1}
-  55%{transform: translate3d(0,-18px,0) scale(1.15); opacity:.9}
-  75%{opacity:0}
-}
-
-/* Door frame + door panel */
-.door-frame{
-  position:absolute;
-  left:50%; top:52%;
-  width:min(430px, 92%);
-  height:min(540px, 84%);
-  transform: translate(-50%, -52%);
-  border-radius: 26px;
-  border: 1px solid rgba(255,255,255,.18);
-  box-shadow: inset 0 0 0 10px rgba(255,255,255,.04),
-              0 22px 55px rgba(0,0,0,.28);
-  overflow:hidden;
-  background: rgba(0,0,0,.06);
-}
-
-/* Light rays behind the door (only visible when opening) */
-.rays{
-  position:absolute; inset:-20%;
-  background:
-    conic-gradient(from 210deg at 50% 55%,
-      transparent 0 15deg,
-      rgba(255,255,255,.10) 15deg 22deg,
-      transparent 22deg 30deg,
-      rgba(198,167,94,.12) 30deg 38deg,
-      transparent 38deg 52deg,
-      rgba(255,255,255,.08) 52deg 58deg,
-      transparent 58deg 360deg
-    );
-  filter: blur(1px);
-  opacity:0;
-  transform: translate3d(0,0,0) scale(.98);
-  transition: opacity 700ms ease, transform 700ms ease;
-  pointer-events:none;
-}
-.door-hero.is-open .rays{
-  opacity:1;
-  transform: translate3d(0,0,0) scale(1.02);
-  animation: raysPulse 5.5s ease-in-out infinite;
-}
-@keyframes raysPulse{
-  0%,100%{opacity:.55}
-  50%{opacity:.85}
-}
-
-.door{
-  position:absolute; inset:0;
-  transform-origin: left center;
-  background:
-    radial-gradient(420px 520px at 30% 25%, rgba(255,255,255,.22), transparent 55%),
-    linear-gradient(180deg, #1c4f86 0%, #143c68 60%, #0f2f55 100%);
-  border-right: 1px solid rgba(255,255,255,.12);
-  will-change: transform;
-  transform: perspective(900px) rotateY(0deg);
-  transition: transform 900ms cubic-bezier(.2,.8,.2,1);
-}
-/* door panels */
-.door::before{
-  content:"";
-  position:absolute; inset:26px;
-  border-radius: 18px;
-  border: 1px solid rgba(255,255,255,.14);
-  box-shadow: inset 0 0 0 2px rgba(198,167,94,.12);
-}
-/* handle */
-.door::after{
-  content:"";
-  position:absolute;
-  right:26px; top:50%;
-  width:14px; height:14px;
-  border-radius:999px;
-  background: var(--gold);
-  box-shadow: 0 0 0 4px rgba(198,167,94,.18);
-  transform: translateY(-50%);
-}
-
-/* edge glow when opening */
-.edge-glow{
-  position:absolute; top:0; bottom:0; left:0;
-  width:10px;
-  background: linear-gradient(180deg, rgba(255,255,255,.25), rgba(198,167,94,.18), rgba(255,255,255,.18));
-  opacity:0;
-  filter: blur(.5px);
-  transition: opacity 600ms ease;
-  pointer-events:none;
-}
-.door-hero.is-open .edge-glow{opacity:1}
-
-.door-hero.is-open .door{
-  transform: perspective(900px) rotateY(-68deg);
-}
-
-/* ---- Regular site sections ---- */
 .section{padding:56px 0}
 .section.band{background:linear-gradient(180deg, rgba(244,239,230,.55), rgba(244,239,230,0)); border-top:1px solid var(--line)}
 .section-title{display:flex;align-items:flex-end;justify-content:space-between;gap:18px;margin-bottom:18px}
@@ -356,10 +196,9 @@ footer{
 
 /* ---- Mobile optimizations ---- */
 @media (max-width: 920px){
-  .door-grid{grid-template-columns: 1fr;gap:16px}
+  .hero-grid{grid-template-columns: 1fr;gap:16px}
   .cards{grid-template-columns: 1fr;gap:12px}
   .two-col{grid-template-columns: 1fr;gap:12px}
-  .door-stage{min-height: 560px}
 }
 
 @media (max-width: 760px){
@@ -380,7 +219,7 @@ footer{
   }
   header.nav-open .navlinks{display:flex}
   .navlinks a{padding:12px 12px}
-  .door-hero{padding:56px 0}
+  .hero{padding:56px 0}
   .footer-grid{flex-direction:column;align-items:flex-start}
 }
 
@@ -388,9 +227,4 @@ footer{
 @media (pointer: coarse){
   .navlinks a{padding:12px 12px}
   .btn{padding:12px 16px}
-}
-
-/* Respect reduced motion */
-@media (prefers-reduced-motion: reduce){
-  .door, .rays, .sparkles i, .world{animation:none !important; transition:none !important}
 }
